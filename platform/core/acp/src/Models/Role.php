@@ -2,10 +2,11 @@
 
 namespace Bng\Acp\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Bng\Base\Models\BaseModel;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Role extends Model
+class Role extends BaseModel
 {
   protected $table = 'roles';
 
@@ -22,5 +23,10 @@ class Role extends Model
   public function users(): BelongsToMany
   {
     return $this->belongsToMany(User::class, 'role_users', 'role_id', 'user_id');
+  }
+
+  public function author(): BelongsTo
+  {
+    return $this->belongsTo(User::class, 'created_by')->withDefault();
   }
 }

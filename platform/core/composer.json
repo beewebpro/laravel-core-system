@@ -32,6 +32,7 @@
                 "Bng\\Table\\Providers\\TableServiceProvider"
             ],
             "aliases": {
+                "Assets": "Bng\\Base\\Facades\\Assets",
                 "BaseHelper": "Bng\\Base\\Facades\\BaseHelper",
                 "PageTitle": "Bng\\Base\\Facades\\PageTitle",
                 "Breadcrumbs": "Bng\\Base\\Facades\\Breadcrumbs",

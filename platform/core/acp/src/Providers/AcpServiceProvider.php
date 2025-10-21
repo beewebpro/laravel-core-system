@@ -78,7 +78,8 @@ class AcpServiceProvider extends ServiceProvider
               ->setTitle(trans('core/acp::user.roles'))
               ->withIcon('bx bx-user-check')
               ->withDescription(trans('core/acp::user.roles_description'))
-              ->withPriority(-9980),
+              ->withPriority(-9980)
+              ->withRoute('roles.index')
           ]
         );
       });

@@ -14,3 +14,5 @@
 <script src="{{ URL::asset('vendor/core/core/base/js/app.js') }}"></script>
 
 @yield('script-bottom')
+
+{!! Assets::renderFooter() !!}

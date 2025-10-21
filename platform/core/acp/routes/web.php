@@ -45,6 +45,10 @@ Route::group(['namespace' => 'Bng\Acp\Http\Controllers'], function () {
           'permission' => false,
         ]);
       });
+
+      Route::group(['prefix' => 'roles', 'as' => 'roles.'], function () {
+        Route::resource('', 'RoleController')->parameters(['' => 'role']);
+      });
     });
   });
 });
