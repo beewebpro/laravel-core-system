@@ -1,0 +1,54 @@
+{
+    "name": "bng/platform",
+    "description": "BNG Platform with laravel",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hồng Huy",
+            "email": "thaiduonghong@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bng\\Support\\": "support/src",
+            "Bng\\Acp\\": "acp/src",
+            "Bng\\Base\\": "base/src",
+            "Bng\\Dashboard\\": "dashboard/src",
+            "Bng\\Media\\": "media/src",
+            "Bng\\Table\\": "table/src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bng\\Base\\Providers\\BaseServiceProvider",
+                "Bng\\Base\\Providers\\CommandServiceProvider",
+                "Bng\\Base\\Providers\\EventServiceProvider",
+                "Bng\\Media\\Providers\\MediaServiceProvider",
+                "Bng\\Acp\\Providers\\AcpServiceProvider",
+                "Bng\\Dashboard\\Providers\\DashboardServiceProvider",
+                "Bng\\Support\\Providers\\SupportServiceProvider",
+                "Bng\\Table\\Providers\\TableServiceProvider"
+            ],
+            "aliases": {
+                "BaseHelper": "Bng\\Base\\Facades\\BaseHelper",
+                "PageTitle": "Bng\\Base\\Facades\\PageTitle",
+                "Breadcrumbs": "Bng\\Base\\Facades\\Breadcrumbs",
+                "DashboardMenu": "Bng\\Base\\Facades\\DashboardMenu",
+                "PanelSectionManager": "Bng\\Base\\Facades\\PanelSectionManager",
+                "Media": "Bng\\Media\\Facades\\Media",
+                "Html": "Bng\\Base\\Facades\\Html"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "intervention/image": "^3.4",
+        "kris/laravel-form-builder": "dev-master",
+        "mews/purifier": "^3.3",
+        "yajra/laravel-datatables-buttons": "^10.0",
+        "yajra/laravel-datatables-oracle": "^10.11"
+    }
+}

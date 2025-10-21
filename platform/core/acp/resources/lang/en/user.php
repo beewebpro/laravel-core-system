@@ -1,0 +1,31 @@
+<?php
+
+return [
+  'users' => 'Users',
+  'users_description' => 'Add, Change, Update Users',
+  'roles' => 'Roles And Permissions',
+  'roles_description' => 'Add, Change, Update Roles And Permissions',
+  'username' => 'Username',
+  'is_super' => 'Is Super',
+  'make_super' => 'Make super',
+  'remove_super' => 'Remove super',
+  'name' => 'Name',
+  'create_new_user' => 'Create new user',
+  'password' => 'Password',
+  'password_confirmation' => 'Re-type password',
+  'role' => 'Role',
+  'select_role' => 'Select role',
+  'status' => 'Status',
+  'profile' => 'Profile',
+  'update_password' => 'Update Password',
+  'current_password' => 'Current Password',
+  'new_password' => 'New Password',
+  'confirm_new_password' => 'Confirm New Password',
+  'update_profile_success' => 'Your profile changes were successfully saved',
+  'password_update_success' => 'Password successfully changed',
+  'avatar' => 'Avatar',
+  'statuses' => [
+    'activated' => 'Activated',
+    'deactivated' => 'Deactivated',
+  ],
+];
