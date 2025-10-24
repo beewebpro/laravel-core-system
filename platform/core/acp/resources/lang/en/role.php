@@ -1,6 +1,10 @@
 <?php
 
 return [
-  'users' => 'Users',
+  'roles' => 'Roles',
   'created_by' => 'Created By',
+  'forms' => [
+    'name' => 'Name',
+    'permissions' => 'Permissions'
+  ]
 ];

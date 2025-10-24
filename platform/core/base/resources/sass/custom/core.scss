@@ -11,3 +11,17 @@ div.dataTables_wrapper div.dataTables_info {
 .hidden {
     display: none !important;
 }
+
+.col-control-label.required:after,
+.control-label.required:after {
+    content: "*";
+    margin-left: 0.25rem;
+    color: #d63939;
+}
+
+.form-check-md .form-check-input {
+    width: 40px;
+    height: 20px;
+    left: -0.5rem;
+    position: relative;
+}

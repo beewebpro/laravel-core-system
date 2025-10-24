@@ -38,7 +38,7 @@ class BaseServiceProvider extends ServiceProvider
 
   public function boot(): void
   {
-    $this->loadAndPublishConfigurations(['general', 'assets'])
+    $this->loadAndPublishConfigurations(['general', 'assets', 'permissions'])
       ->loadAndPublishViews()
       ->loadRoutes()
       ->publishAssets()

@@ -129,4 +129,24 @@ class BaseHelper
   {
     return json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . PHP_EOL;
   }
+
+  public function scanFolder(string $path, array $ignoreFiles = []): array
+  {
+    if (empty($path) || ! File::isDirectory($path)) {
+      return [];
+    }
+
+    $ignoreFiles = array_merge(['.', '..', '.DS_Store'], $ignoreFiles);
+    $files = [];
+
+    foreach (new \DirectoryIterator($path) as $file) {
+      if (! $file->isDot() && ! in_array($file->getFilename(), $ignoreFiles)) {
+        $files[] = $file->getFilename();
+      }
+    }
+
+    natsort($files);
+
+    return $files;
+  }
 }

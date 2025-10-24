@@ -1,18 +1,10 @@
-<x-core::form.field
-    :showLabel="$showLabel"
-    :showField="$showField"
-    :options="$options"
-    :name="$name"
-    :prepend="$prepend ?? null"
-    :append="$append ?? null"
-    :showError="$showError"
-    :nameKey="$nameKey"
->
-    <x-slot:label>
+<div class="form-field mb-3">
+    <label for="{{ $name }}" class="{{ $options['label_attr']['class'] ?? '' }}" {!! isset($options['label_attr'])
+        ? collect($options['label_attr'])->except(['class'])->map(fn($value, $key) => $key . '="' . $value . '"')->join(' ')
+        : '' !!}>
         @if ($showLabel && $options['label'] !== false && $options['label_show'])
-            {!! Form::customLabel($name, $options['label'], $options['label_attr']) !!}
+            {!! $options['label'] !!}
         @endif
-    </x-slot:label>
-
+    </label>
     {!! Form::textarea($name, $options['value'], $options['attr']) !!}
-</x-core::form.field>
+</div>

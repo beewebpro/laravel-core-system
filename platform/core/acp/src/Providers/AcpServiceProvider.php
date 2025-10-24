@@ -41,6 +41,7 @@ class AcpServiceProvider extends ServiceProvider
   public function boot(): void
   {
     $this->setNamespace('core/acp')
+      ->loadAndPublishConfigurations(['permissions'])
       ->loadAndPublishViews()
       ->loadRoutes()
       ->publishAssets()

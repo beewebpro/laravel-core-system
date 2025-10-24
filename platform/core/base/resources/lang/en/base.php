@@ -16,8 +16,10 @@ return [
         'records' => 'records',
     ],
     'forms' => [
-        'create' => 'Create'
+        'create' => 'Create',
+        'name' => 'Name'
     ],
+    'create_new' => 'Create New',
     'create_success_message' => 'Created successfully',
     'update_success_message' => 'Updated successfully',
     'delete_success_message' => 'Deleted successfully',

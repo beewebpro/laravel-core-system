@@ -14,15 +14,22 @@ class RoleController extends BaseSystemController
   {
     return parent::breadcrumb()
       ->add(
-        trans('core/acp::user.users'),
+        trans('core/acp::role.roles'),
         route('roles.index')
       );
   }
 
   public function index(RoleTable $dataTable)
   {
-    $this->pageTitle(trans('core/acp::user.users'));
+    $this->pageTitle(trans('core/acp::role.roles'));
     return $dataTable->renderTable();
+  }
+
+  public function create()
+  {
+    $this->pageTitle(trans('core/base::base.create_new'));
+
+    return RoleForm::create()->renderForm();
   }
 
   public function edit(Role $role)
