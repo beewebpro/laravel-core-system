@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'Bng\Media\Http\Controllers'], function () {
   Route::get('media/files/{hash}/{id}', [
     'as' => 'media.indirect.url',
-    'uses' => 'PublicMediaController@show',
+    'uses' => 'MediaController@show',
     'middleware' => 'throttle',
   ]);
 
@@ -41,30 +41,6 @@ Route::group(['namespace' => 'Bng\Media\Http\Controllers'], function () {
         'as' => 'download',
         'uses' => 'MediaController@download',
       ]);
-
-      Route::group(['prefix' => 'files'], function () {
-        Route::post('upload', [
-          'as' => 'files.upload',
-          'uses' => 'MediaFileController@postUpload',
-        ]);
-
-        Route::post('upload-from-editor', [
-          'as' => 'files.upload.from.editor',
-          'uses' => 'MediaFileController@postUploadFromEditor',
-        ]);
-
-        Route::post('download-url', [
-          'as' => 'download_url',
-          'uses' => 'MediaFileController@postDownloadUrl',
-        ]);
-      });
-
-      Route::group(['prefix' => 'folders'], function () {
-        Route::post('create', [
-          'as' => 'folders.create',
-          'uses' => 'MediaFolderController@store',
-        ]);
-      });
     });
   });
 });

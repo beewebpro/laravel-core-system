@@ -28,8 +28,6 @@ use Bng\Base\Supports\Builders\RenderingExtensible;
 use Bng\Base\Traits\Forms\HasCollapsible;
 use Bng\Base\Traits\Forms\HasColumns;
 use Bng\Base\Traits\Forms\HasMetadata;
-use Bng\JsValidation\Facades\JsValidator;
-use Bng\JsValidation\Javascript\JavascriptValidator;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;

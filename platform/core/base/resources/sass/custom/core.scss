@@ -19,9 +19,16 @@ div.dataTables_wrapper div.dataTables_info {
     color: #d63939;
 }
 
-.form-check-md .form-check-input {
-    width: 40px;
-    height: 20px;
-    left: -0.5rem;
-    position: relative;
+.form-check-input {
+    width: 20px !important;
+    height: 20px !important;
+    margin: 0;
+}
+
+.toggle-icon i::before {
+    content: "\eafd";
+}
+
+.toggle-icon:not(.collapsed) i::before {
+    content: "\eace";
 }

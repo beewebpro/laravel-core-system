@@ -11,7 +11,6 @@ use Bng\Table\Actions\EditAction;
 use Bng\Table\BulkChanges\EmailBulkChange;
 use Bng\Table\BulkChanges\NameBulkChange;
 use Bng\Table\BulkChanges\StatusBulkChange;
-use Bng\Table\Columns\Column;
 use Bng\Table\Columns\CreatedAtColumn;
 use Bng\Table\Columns\EmailColumn;
 use Bng\Table\Columns\LinkableColumn;

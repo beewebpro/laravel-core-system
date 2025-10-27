@@ -20,11 +20,16 @@ class RoleForm extends FormAbstract
 
     $active = [];
     $flags = Role::getPermissions();
-    $children = $this->getPermissionTree($flags);
+    $permissionTrees = $this->getPermissionTree($flags);
+
+    $role = $this->getModel();
+
+    if ($role && $role->getKey()) {
+      $active = array_keys($role->permissions ?? []);
+    }
 
     $this
       ->model(Role::class)
-      ->setUrl(route('users.store'))
       ->setValidatorClass(CreateRoleRequest::class)
       ->columns(1)
       ->add(
@@ -45,7 +50,7 @@ class RoleForm extends FormAbstract
       ->addMetaBoxes([
         'permissions' => [
           'title' => trans('core/acp::role.forms.permissions'),
-          'content' => view('core/acp::roles.permissions', compact('active', 'flags', 'children'))->render(),
+          'content' => view('core/acp::roles.permissions', compact('active', 'flags', 'permissionTrees'))->render(),
           'header_actions' => view('core/acp::roles.permissions-actions')->render(),
         ],
       ]);

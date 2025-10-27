@@ -13,6 +13,7 @@
         $options['value'],
         array_merge($options['attr'], [
             'class' => ($errors->has($name) ? 'is-invalid ' : '') . ($options['attr']['class'] ?? ''),
+            'id' => $name,
         ]),
     ) !!}
     @if ($showError)
