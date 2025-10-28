@@ -82,6 +82,15 @@ class UserController extends BaseSystemController
 
   public function updateProfile(User $user, UpdateUserRequest $request)
   {
+    if ($request->input('status') === 'deactivated') {
+      $user->activations()->update(['completed' => false, 'completed_at' => null]);
+    } elseif ($request->input('status') === 'activated' && ! $user->activations()->where('completed', true)->exists()) {
+      $user->activations()->create([
+        'code' => md5(uniqid(mt_rand(), true)),
+        'completed' => true,
+        'completed_at' => now(),
+      ]);
+    }
     EditForm::createFromModel($user)
       ->setRequest($request)
       ->save();

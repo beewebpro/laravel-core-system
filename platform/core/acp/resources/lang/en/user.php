@@ -24,6 +24,7 @@ return [
   'update_profile_success' => 'Your profile changes were successfully saved',
   'password_update_success' => 'Password successfully changed',
   'avatar' => 'Avatar',
+  'no_role' => 'No Role',
   'statuses' => [
     'activated' => 'Activated',
     'deactivated' => 'Deactivated',

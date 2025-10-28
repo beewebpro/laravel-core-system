@@ -16,8 +16,8 @@ class UserStatusEnum extends Enum
   public function toHtml(): HtmlString|string
   {
     return match ($this->value) {
-      self::ACTIVATED => Html::tag('span', self::ACTIVATED()->label(), ['class' => 'badge bg-info text-info-fg']),
-      self::DEACTIVATED => Html::tag('span', self::DEACTIVATED()->label(), ['class' => 'badge bg-warning text-warning-fg']),
+      self::ACTIVATED => Html::tag('span', self::ACTIVATED()->label(), ['class' => 'badge rounded-pill font-size-12 badge-soft-success']),
+      self::DEACTIVATED => Html::tag('span', self::DEACTIVATED()->label(), ['class' => 'badge rounded-pill font-size-12 badge-soft-warning']),
       default => parent::toHtml(),
     };
   }

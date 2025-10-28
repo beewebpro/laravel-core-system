@@ -4,6 +4,7 @@ namespace Bng\Acp\Tables;
 
 use Bng\Acp\Enums\UserStatusEnum;
 use Bng\Acp\Models\User;
+use Bng\Base\Facades\Assets;
 use Bng\Table\Abstracts\TableAbstract;
 use Bng\Table\Actions\Action;
 use Bng\Table\Actions\DeleteAction;
@@ -13,6 +14,7 @@ use Bng\Table\BulkChanges\NameBulkChange;
 use Bng\Table\BulkChanges\StatusBulkChange;
 use Bng\Table\Columns\CreatedAtColumn;
 use Bng\Table\Columns\EmailColumn;
+use Bng\Table\Columns\FormattedColumn;
 use Bng\Table\Columns\LinkableColumn;
 use Bng\Table\Columns\NameColumn;
 use Bng\Table\Columns\YesNoColumn;
@@ -25,14 +27,42 @@ class UserTable extends TableAbstract
 {
   public function setup(): void
   {
+    Assets::addScriptsDirectly('vendor/core/core/acp/js/user.js');
     $this->model(User::class)
       ->addColumns([
         NameColumn::make()->route('users.edit'),
         LinkableColumn::make('username')->route('users.edit'),
         EmailColumn::make(),
+        FormattedColumn::make('role_name')
+          ->title(trans('core/acp::user.role'))
+          ->searchable(false)
+          ->orderable(false)
+          ->getValueUsing(function (FormattedColumn $column) {
+            $item = $column->getItem();
+
+            $role = $item->roles->first();
+
+            if (! $this->hasPermission('users.edit')) {
+              return $role?->name ?: trans('core/acp::user.no_role');
+            }
+
+            return view('core/acp::users.partials.role', compact('item', 'role'))->render();
+          }),
         YesNoColumn::make('super_user')
           ->title(trans('core/acp::user.is_super'))
           ->width(100),
+        FormattedColumn::make('status_name')
+          ->title(trans('core/base::tables.status'))
+          ->width(100)
+          ->searchable(false)
+          ->orderable(false)
+          ->getValueUsing(function (FormattedColumn $column) {
+            if ($column->getItem()->activations()->where('completed', true)->exists()) {
+              return UserStatusEnum::ACTIVATED()->toHtml();
+            }
+
+            return UserStatusEnum::DEACTIVATED()->toHtml();
+          }),
         CreatedAtColumn::make()->dateFormat('d-m-Y'),
       ])
       ->when(Auth::guard()->user()->isSuperUser(), function () {
