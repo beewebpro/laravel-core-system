@@ -78,7 +78,9 @@ class LoginController extends BaseController
           session()->flash('url.intended', url()->current());
         }
 
-        return $this->sendLoginResponse($request);
+        if ($this->attemptLogin($request)) {
+          return $this->sendLoginResponse($request);
+        }
       });
   }
 
@@ -94,5 +96,13 @@ class LoginController extends BaseController
 
     $request->session()->invalidate();
     return redirect()->route('access.login')->with(['message' => trans('core/acp::auth.login.logout_success')]);
+  }
+
+  protected function attemptLogin(Request $request): bool
+  {
+    return $this->guard()->attempt(
+      $this->credentials($request),
+      $request->filled('remember')
+    );
   }
 }

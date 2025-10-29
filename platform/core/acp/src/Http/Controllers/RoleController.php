@@ -8,6 +8,7 @@ use Bng\Acp\Models\Role;
 use Bng\Acp\Tables\RoleTable;
 use Bng\Base\Http\Controllers\BaseSystemController;
 use Bng\Base\Supports\Breadcrumb;
+use Illuminate\Http\Request;
 
 class RoleController extends BaseSystemController
 {
@@ -70,6 +71,13 @@ class RoleController extends BaseSystemController
       ->setPreviousRoute('roles.index')
       ->setNextRoute('roles.edit', $role->getKey())
       ->withUpdatedSuccessMessage();
+  }
+
+  public function getRoles(Request $request)
+  {
+    $roles = Role::query()->get(['id', 'name']);
+
+    return $this->httpResponse()->setData($roles)->toApiResponse();
   }
 
   protected function cleanPermission(array $permissions): array

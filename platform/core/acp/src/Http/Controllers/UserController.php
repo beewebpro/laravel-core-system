@@ -12,6 +12,7 @@ use Bng\Acp\Models\User;
 use Bng\Acp\Services\CreateUserService;
 use Bng\Acp\Services\UpdatePasswordService;
 use Bng\Acp\Tables\UserTable;
+use Bng\Base\Facades\Assets;
 use Bng\Base\Http\Actions\DeleteResourceAction;
 use Bng\Base\Http\Controllers\BaseSystemController;
 use Bng\Base\Supports\Breadcrumb;
@@ -33,6 +34,8 @@ class UserController extends BaseSystemController
   public function index(UserTable $dataTable)
   {
     $this->pageTitle(trans('core/acp::user.users'));
+    Assets::addScriptsDirectly('vendor/core/core/acp/js/user.js?t=' . time());
+
     return $dataTable->renderTable();
   }
 

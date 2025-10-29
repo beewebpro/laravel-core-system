@@ -48,6 +48,11 @@ Route::group(['namespace' => 'Bng\Acp\Http\Controllers'], function () {
 
       Route::group(['prefix' => 'roles', 'as' => 'roles.'], function () {
         Route::resource('', 'RoleController')->parameters(['' => 'role']);
+        Route::get('get-roles', [
+          'as' => 'get-roles',
+          'uses' => 'RoleController@getRoles',
+          'permission' => 'roles.index',
+        ]);
       });
     });
   });

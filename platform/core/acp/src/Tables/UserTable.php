@@ -27,7 +27,6 @@ class UserTable extends TableAbstract
 {
   public function setup(): void
   {
-    Assets::addScriptsDirectly('vendor/core/core/acp/js/user.js');
     $this->model(User::class)
       ->addColumns([
         NameColumn::make()->route('users.edit'),
