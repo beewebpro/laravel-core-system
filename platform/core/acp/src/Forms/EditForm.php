@@ -48,7 +48,21 @@ class EditForm extends FormAbstract
           ->colspan(1)
           ->toArray()
       )
-      ->add('email', TextField::class, EmailFieldOption::make()->required()->colspan(2)->toArray())
+      ->add('email', TextField::class, EmailFieldOption::make()->required()->colspan(1)->toArray())
+      ->add(
+        'role_id',
+        SelectField::class,
+        SelectFieldOption::make()
+          ->label(trans('core/acp::user.role'))
+          ->addAttribute('class', 'form-select')
+          ->choices(['' => trans('core/acp::user.select_role')] + $roles->all())
+          ->selected(
+            $this->getModel()->getKey()
+              ? ($this->getModel()->roles()->first() ? $this->getModel()->roles()->first()->getKey() : '')
+              : ($defaultRole ? $defaultRole->getKey() : '')
+          )
+          ->toArray()
+      )
       ->add('status', 'customSelect', [
         'label' => trans('core/acp::user.status'),
         'label_attr' => ['class' => 'control-label'],

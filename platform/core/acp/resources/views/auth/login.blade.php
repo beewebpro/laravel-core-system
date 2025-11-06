@@ -72,7 +72,8 @@
                                             </div>
 
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="remember-check">
+                                                <input class="form-check-input me-1" type="checkbox" name="remember"
+                                                    id="remember-check">
                                                 <label class="form-check-label" for="remember-check">
                                                     {{ trans('core/acp::auth.form.remember_me') }}
                                                 </label>

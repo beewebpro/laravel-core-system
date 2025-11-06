@@ -73,11 +73,17 @@ class RoleController extends BaseSystemController
       ->withUpdatedSuccessMessage();
   }
 
+
+  public function show(Role $role) {}
+
   public function getRoles(Request $request)
   {
-    $roles = Role::query()->get(['id', 'name']);
-
-    return $this->httpResponse()->setData($roles)->toApiResponse();
+    $roles = Role::query()->get();
+    $data = [
+      'url' => route('users.assign-role'),
+      'roles' => $roles,
+    ];
+    return $this->httpResponse()->setData($data);
   }
 
   protected function cleanPermission(array $permissions): array

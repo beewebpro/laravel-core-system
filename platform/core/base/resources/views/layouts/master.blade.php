@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <title> {{ PageTitle::getTitle() }} BNG System</title>
+    @if ($csrfToken = csrf_token())
+        <meta name="csrf-token" content="{{ $csrfToken }}">
+    @endif
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="BNG System" name="description" />
     <meta content="BNG" name="author" />

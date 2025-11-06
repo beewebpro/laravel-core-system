@@ -8,6 +8,7 @@ use Bng\Acp\Forms\UserForm;
 use Bng\Acp\Http\Requests\CreateUserRequest;
 use Bng\Acp\Http\Requests\UpdatePasswordRequest;
 use Bng\Acp\Http\Requests\UpdateUserRequest;
+use Bng\Acp\Models\Role;
 use Bng\Acp\Models\User;
 use Bng\Acp\Services\CreateUserService;
 use Bng\Acp\Services\UpdatePasswordService;
@@ -74,6 +75,13 @@ class UserController extends BaseSystemController
 
     $user->password = null;
     $changePasswordForm = ChangePasswordForm::createFromModel($user)->setUrl(route('users.update-password', $user->getKey()))->renderForm();
+
+    $form = EditForm::createFromModel($user);
+    $form->saving(function (EditForm $form) use ($user, $request) {
+      $form->setupModel($user);
+      $form->save();
+    });
+
     if (! $canChangeProfile) {
     }
 
@@ -94,9 +102,13 @@ class UserController extends BaseSystemController
         'completed_at' => now(),
       ]);
     }
+
     EditForm::createFromModel($user)
       ->setRequest($request)
       ->save();
+
+    $role = Role::query()->findOrFail($request->input('role_id'));
+    $user->roles()->sync([$role->getKey()]);
 
     return $this
       ->httpResponse()
@@ -121,6 +133,15 @@ class UserController extends BaseSystemController
     return $this
       ->httpResponse()
       ->setMessage(trans('core/acp::user.password_update_success'));
+  }
+
+  public function assignRole(Request $request)
+  {
+    $user = User::query()->findOrFail($request->input('userId'));
+    $role = Role::query()->findOrFail($request->input('roleId'));
+    $user->roles()->sync([$role->getKey()]);
+
+    return $this->httpResponse();
   }
 
   public function destroy(User $user)

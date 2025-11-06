@@ -44,14 +44,19 @@ Route::group(['namespace' => 'Bng\Acp\Http\Controllers'], function () {
           'uses' => 'UserController@updatePassword',
           'permission' => false,
         ]);
+
+        Route::post('assign-role', [
+          'as' => 'assign-role',
+          'uses' => 'UserController@assignRole',
+          'permission' => 'users.edit',
+        ]);
       });
 
       Route::group(['prefix' => 'roles', 'as' => 'roles.'], function () {
         Route::resource('', 'RoleController')->parameters(['' => 'role']);
-        Route::get('get-roles', [
+        Route::post('get-roles', [
           'as' => 'get-roles',
           'uses' => 'RoleController@getRoles',
-          'permission' => 'roles.index',
         ]);
       });
     });
