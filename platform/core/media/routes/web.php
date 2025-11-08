@@ -41,6 +41,30 @@ Route::group(['namespace' => 'Bng\Media\Http\Controllers'], function () {
         'as' => 'download',
         'uses' => 'MediaController@download',
       ]);
+
+      Route::group(['prefix' => 'files'], function (): void {
+        Route::post('upload', [
+          'as' => 'files.upload',
+          'uses' => 'MediaFileController@postUpload',
+        ]);
+
+        Route::post('upload-from-editor', [
+          'as' => 'files.upload.from.editor',
+          'uses' => 'MediaFileController@postUploadFromEditor',
+        ]);
+
+        Route::post('download-url', [
+          'as' => 'download_url',
+          'uses' => 'MediaFileController@postDownloadUrl',
+        ]);
+      });
+
+      Route::group(['prefix' => 'folders'], function (): void {
+        Route::post('create', [
+          'as' => 'folders.create',
+          'uses' => 'MediaFolderController@store',
+        ]);
+      });
     });
   });
 });
