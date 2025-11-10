@@ -51227,7 +51227,7 @@ var VueApp = /*#__PURE__*/function () {
     key: "boot",
     value: function boot() {
       var _this = this;
-      var seletor = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "#app";
+      var seletor = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "#layout-wrapper";
       if (this.isBooted) {
         return;
       }

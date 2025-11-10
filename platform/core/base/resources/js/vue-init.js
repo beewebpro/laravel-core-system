@@ -55,7 +55,7 @@ export default class VueApp {
     }
 
     // Thực hiện mount Vue app
-    boot(seletor = "#app") {
+    boot(seletor = "#layout-wrapper") {
         if (this.isBooted) {
             return;
         }
