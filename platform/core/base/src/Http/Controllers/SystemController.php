@@ -2,6 +2,8 @@
 
 namespace Bng\Base\Http\Controllers;
 
+use Bng\Base\Facades\Assets;
+
 class SystemController extends BaseSystemController
 {
     public function index()

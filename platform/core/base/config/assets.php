@@ -5,7 +5,15 @@ return [
   'scripts' => [],
   'styles' => [],
   'resources' => [
-    'scripts' => [],
+    'scripts' => [
+      'vue-init' => [
+        'use_cdn' => false,
+        'location' => 'header',
+        'src' => [
+          'local' => '/vendor/core/core/base/js/vue-init.js',
+        ],
+      ],
+    ],
     'styles' => [],
   ],
 ];

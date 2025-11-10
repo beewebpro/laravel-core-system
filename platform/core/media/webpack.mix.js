@@ -5,8 +5,8 @@ const directory = path.basename(path.resolve(__dirname));
 const source = `platform/core/${directory}`;
 const dist = `public/vendor/core/core/${directory}`;
 
-mix.js(`${source}/resources/js/media.js`, `${dist}/js`).sass(
-    `${source}/resources/sass/media.scss`,
+mix.js(`${source}/resources/assets/js/media.js`, `${dist}/js`).sass(
+    `${source}/resources/assets/sass/media.scss`,
     `${dist}/css`
 );
 

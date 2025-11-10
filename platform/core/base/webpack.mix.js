@@ -11,7 +11,8 @@ mix.sass(`${source}/resources/sass/app.scss`, `${dist}/css`)
     .sass(`${source}/resources/sass/custom/crop-image.scss`, `${dist}/css`)
     .js(`${source}/resources/js/app.js`, `${dist}/js`)
     .js(`${source}/resources/js/main.js`, `${dist}/js`)
-    .js(`${source}/resources/js/base.js`, `${dist}/js`);
+    .js(`${source}/resources/js/base.js`, `${dist}/js`)
+    .js(`${source}/resources/js/vue-init.js`, `${dist}/js`);
 
 if (mix.inProduction()) {
     mix.copy(`${dist}/css/app.css`, `${source}/public/css`)
@@ -20,5 +21,6 @@ if (mix.inProduction()) {
         .copy(`${dist}/css/crop-image.css`, `${source}/public/css`)
         .copy(`${dist}/js/app.js`, `${source}/public/js`)
         .copy(`${dist}/js/main.js`, `${source}/public/js`)
-        .copy(`${dist}/js/base.js`, `${source}/public/js`);
+        .copy(`${dist}/js/base.js`, `${source}/public/js`)
+        .copy(`${dist}/js/vue-init.js`, `${source}/public/js`);
 }

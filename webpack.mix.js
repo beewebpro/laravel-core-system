@@ -10,6 +10,8 @@ mix.options({
     manifest: false,
 });
 
+mix.vue();
+
 let buildPaths = [];
 
 function pushToPath(path, type) {

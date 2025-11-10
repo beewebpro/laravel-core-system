@@ -541,6 +541,19 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 
 /***/ }),
 
+/***/ "./platform/core/base/resources/sass/icons.scss":
+/*!******************************************************!*\
+  !*** ./platform/core/base/resources/sass/icons.scss ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./platform/core/base/resources/sass/custom/crop-image.scss":
 /*!******************************************************************!*\
   !*** ./platform/core/base/resources/sass/custom/crop-image.scss ***!
@@ -567,10 +580,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./platform/core/media/resources/sass/media.scss":
-/*!*******************************************************!*\
-  !*** ./platform/core/media/resources/sass/media.scss ***!
-  \*******************************************************/
+/***/ "./platform/core/media/resources/assets/sass/media.scss":
+/*!**************************************************************!*\
+  !*** ./platform/core/media/resources/assets/sass/media.scss ***!
+  \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -597,19 +610,6 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************************!*\
   !*** ./platform/core/base/resources/sass/bootstrap.scss ***!
   \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
-/***/ "./platform/core/base/resources/sass/icons.scss":
-/*!******************************************************!*\
-  !*** ./platform/core/base/resources/sass/icons.scss ***!
-  \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -707,11 +707,11 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		var installedChunks = {
 /******/ 			"/vendor/core/core/table/js/table": 0,
 /******/ 			"vendor/core/core/base/css/app": 0,
-/******/ 			"vendor/core/core/base/css/icons": 0,
 /******/ 			"vendor/core/core/base/css/bootstrap": 0,
 /******/ 			"vendor/core/core/media/css/media": 0,
 /******/ 			"vendor/core/core/table/css/table": 0,
-/******/ 			"vendor/core/core/base/css/crop-image": 0
+/******/ 			"vendor/core/core/base/css/crop-image": 0,
+/******/ 			"vendor/core/core/base/css/icons": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -761,13 +761,13 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["vendor/core/core/base/css/app","vendor/core/core/base/css/icons","vendor/core/core/base/css/bootstrap","vendor/core/core/media/css/media","vendor/core/core/table/css/table","vendor/core/core/base/css/crop-image"], () => (__webpack_require__("./platform/core/table/resources/js/table.js")))
-/******/ 	__webpack_require__.O(undefined, ["vendor/core/core/base/css/app","vendor/core/core/base/css/icons","vendor/core/core/base/css/bootstrap","vendor/core/core/media/css/media","vendor/core/core/table/css/table","vendor/core/core/base/css/crop-image"], () => (__webpack_require__("./platform/core/table/resources/sass/table.scss")))
-/******/ 	__webpack_require__.O(undefined, ["vendor/core/core/base/css/app","vendor/core/core/base/css/icons","vendor/core/core/base/css/bootstrap","vendor/core/core/media/css/media","vendor/core/core/table/css/table","vendor/core/core/base/css/crop-image"], () => (__webpack_require__("./platform/core/media/resources/sass/media.scss")))
-/******/ 	__webpack_require__.O(undefined, ["vendor/core/core/base/css/app","vendor/core/core/base/css/icons","vendor/core/core/base/css/bootstrap","vendor/core/core/media/css/media","vendor/core/core/table/css/table","vendor/core/core/base/css/crop-image"], () => (__webpack_require__("./platform/core/base/resources/sass/app.scss")))
-/******/ 	__webpack_require__.O(undefined, ["vendor/core/core/base/css/app","vendor/core/core/base/css/icons","vendor/core/core/base/css/bootstrap","vendor/core/core/media/css/media","vendor/core/core/table/css/table","vendor/core/core/base/css/crop-image"], () => (__webpack_require__("./platform/core/base/resources/sass/bootstrap.scss")))
-/******/ 	__webpack_require__.O(undefined, ["vendor/core/core/base/css/app","vendor/core/core/base/css/icons","vendor/core/core/base/css/bootstrap","vendor/core/core/media/css/media","vendor/core/core/table/css/table","vendor/core/core/base/css/crop-image"], () => (__webpack_require__("./platform/core/base/resources/sass/icons.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendor/core/core/base/css/app","vendor/core/core/base/css/icons","vendor/core/core/base/css/bootstrap","vendor/core/core/media/css/media","vendor/core/core/table/css/table","vendor/core/core/base/css/crop-image"], () => (__webpack_require__("./platform/core/base/resources/sass/custom/crop-image.scss")))
+/******/ 	__webpack_require__.O(undefined, ["vendor/core/core/base/css/app","vendor/core/core/base/css/bootstrap","vendor/core/core/media/css/media","vendor/core/core/table/css/table","vendor/core/core/base/css/crop-image","vendor/core/core/base/css/icons"], () => (__webpack_require__("./platform/core/table/resources/js/table.js")))
+/******/ 	__webpack_require__.O(undefined, ["vendor/core/core/base/css/app","vendor/core/core/base/css/bootstrap","vendor/core/core/media/css/media","vendor/core/core/table/css/table","vendor/core/core/base/css/crop-image","vendor/core/core/base/css/icons"], () => (__webpack_require__("./platform/core/table/resources/sass/table.scss")))
+/******/ 	__webpack_require__.O(undefined, ["vendor/core/core/base/css/app","vendor/core/core/base/css/bootstrap","vendor/core/core/media/css/media","vendor/core/core/table/css/table","vendor/core/core/base/css/crop-image","vendor/core/core/base/css/icons"], () => (__webpack_require__("./platform/core/media/resources/assets/sass/media.scss")))
+/******/ 	__webpack_require__.O(undefined, ["vendor/core/core/base/css/app","vendor/core/core/base/css/bootstrap","vendor/core/core/media/css/media","vendor/core/core/table/css/table","vendor/core/core/base/css/crop-image","vendor/core/core/base/css/icons"], () => (__webpack_require__("./platform/core/base/resources/sass/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["vendor/core/core/base/css/app","vendor/core/core/base/css/bootstrap","vendor/core/core/media/css/media","vendor/core/core/table/css/table","vendor/core/core/base/css/crop-image","vendor/core/core/base/css/icons"], () => (__webpack_require__("./platform/core/base/resources/sass/bootstrap.scss")))
+/******/ 	__webpack_require__.O(undefined, ["vendor/core/core/base/css/app","vendor/core/core/base/css/bootstrap","vendor/core/core/media/css/media","vendor/core/core/table/css/table","vendor/core/core/base/css/crop-image","vendor/core/core/base/css/icons"], () => (__webpack_require__("./platform/core/base/resources/sass/icons.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendor/core/core/base/css/app","vendor/core/core/base/css/bootstrap","vendor/core/core/media/css/media","vendor/core/core/table/css/table","vendor/core/core/base/css/crop-image","vendor/core/core/base/css/icons"], () => (__webpack_require__("./platform/core/base/resources/sass/custom/crop-image.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

@@ -11,3 +11,4 @@
 <script src="{{ URL::asset('vendor/core/core/base/libs/jquery/jquery.min.js') }}"></script>
 
 @yield('head-js')
+{!! Assets::renderHeader() !!}

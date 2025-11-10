@@ -24,6 +24,8 @@ class Assets
 
   protected string $build = '';
 
+  protected bool $hasVueJs = false;
+
   public const ASSETS_SCRIPT_POSITION_HEADER = 'header';
 
   public const ASSETS_SCRIPT_POSITION_FOOTER = 'footer';
@@ -31,7 +33,6 @@ class Assets
   public function __construct(Repository $config, HtmlBuilder $htmlBuilder)
   {
     $this->config = $config->get('core.base.assets');
-
     $this->scripts = $this->config['scripts'];
 
     $this->styles = $this->config['styles'];
@@ -58,11 +59,38 @@ class Assets
     return $this;
   }
 
+  public function renderHeader(array $lastStyles = []): string
+  {
+    $styles = $this->getStyles($lastStyles);
+
+    $headScripts = $this->getScripts(self::ASSETS_SCRIPT_POSITION_HEADER);
+
+    return view('core/base::assets.header', compact('styles', 'headScripts'))->render();
+  }
+
   public function renderFooter(): string
   {
     $bodyScripts = $this->getScripts(self::ASSETS_SCRIPT_POSITION_FOOTER);
 
     return view('core/base::assets.footer', compact('bodyScripts'))->render();
+  }
+
+  public function getStyles(array $lastStyles = []): array
+  {
+    $styles = [];
+    if (! empty($lastStyles)) {
+      $this->styles = array_merge($this->styles, $lastStyles);
+    }
+
+    $this->styles = array_unique($this->styles);
+
+    foreach ($this->styles as $style) {
+      $configName = 'resources.styles.' . $style;
+
+      $styles = array_merge($styles, $this->getSource($configName));
+    }
+
+    return array_merge($styles, $this->appendedStyles);
   }
 
   public function getScripts(?string $location = null): array
@@ -167,5 +195,21 @@ class Assets
   public function getBuildVersion(): string
   {
     return $this->build = $this->config['enable_version'] ? '?v=' . $this->config['version'] : '';
+  }
+
+  public function initVueJS(): self
+  {
+    $this->addScripts(['vue-init']);
+
+    $this->hasVueJs = true;
+
+    return $this;
+  }
+
+  public function addScripts(array|string $assets): static
+  {
+    $this->scripts = array_merge($this->scripts, (array) $assets);
+
+    return $this;
   }
 }

@@ -16,7 +16,7 @@
 </head>
 
 <body data-sidebar="dark">
-    <div id="layout-wrapper">
+    <div id="app">
         @include('core/base::layouts.partials.topbar')
         @include('core/base::layouts.partials.sidebar')
         <div class="main-content">
