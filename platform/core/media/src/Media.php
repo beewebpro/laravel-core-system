@@ -4,6 +4,7 @@ namespace Bng\Media;
 
 use Bng\Media\Services\ThumbnailService;
 use Bng\Media\Services\UploadsManager;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 
@@ -182,5 +183,28 @@ class Media
     }
 
     return $sizes;
+  }
+
+  public function responseSuccess(array $data, ?string $message = null): JsonResponse
+  {
+    return response()->json([
+      'error' => false,
+      'data' => $data,
+      'message' => $message,
+    ]);
+  }
+
+  public function responseError(
+    string $message,
+    array $data = [],
+    ?int $code = null,
+    int $status = 200
+  ): JsonResponse {
+    return response()->json([
+      'error' => true,
+      'message' => $message,
+      'data' => $data,
+      'code' => $code,
+    ], $status);
   }
 }

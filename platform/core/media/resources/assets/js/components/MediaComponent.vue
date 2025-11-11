@@ -9,11 +9,13 @@
                                 <div class="row mb-3">
                                     <div class="col-xl-3 col-sm-6">
                                         <div class="mt-2">
-                                            <h5>My Files</h5>
+                                            <h5>
+                                                {{ __("Media") }}
+                                            </h5>
                                         </div>
                                     </div>
                                     <div class="col-xl-9 col-sm-6">
-                                        <form
+                                        <div
                                             class="mt-4 mt-sm-0 float-sm-end d-flex align-items-center"
                                         >
                                             <div class="dropdown mb-2 me-2">
@@ -27,16 +29,18 @@
                                                     <i
                                                         class="mdi mdi-plus me-1"
                                                     ></i>
-                                                    Create New
+                                                    {{ __("Create New") }}
                                                 </button>
                                                 <div class="dropdown-menu">
                                                     <a
                                                         class="dropdown-item"
                                                         href="#"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#folderModal"
                                                         ><i
                                                             class="bx bx-folder me-1"
                                                         ></i>
-                                                        Folder</a
+                                                        {{ __("Folder") }}</a
                                                     >
                                                     <a
                                                         class="dropdown-item"
@@ -44,7 +48,9 @@
                                                         ><i
                                                             class="bx bx-file me-1"
                                                         ></i>
-                                                        File</a
+                                                        {{
+                                                            __("Upload File")
+                                                        }}</a
                                                     >
                                                 </div>
                                             </div>
@@ -93,1121 +99,21 @@
                                                     >
                                                 </div>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div>
-                                <div class="row">
-                                    <div class="col-xl-4 col-sm-6">
-                                        <div class="card shadow-none border">
-                                            <div class="card-body p-3">
-                                                <div class="">
-                                                    <div class="float-end ms-2">
-                                                        <div
-                                                            class="dropdown mb-2"
-                                                        >
-                                                            <a
-                                                                class="font-size-16 text-muted dropdown-toggle"
-                                                                role="button"
-                                                                data-bs-toggle="dropdown"
-                                                                aria-haspopup="true"
-                                                            >
-                                                                <i
-                                                                    class="mdi mdi-dots-horizontal"
-                                                                ></i>
-                                                            </a>
-
-                                                            <div
-                                                                class="dropdown-menu dropdown-menu-end"
-                                                            >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Open</a
-                                                                >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Edit</a
-                                                                >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Rename</a
-                                                                >
-                                                                <div
-                                                                    class="dropdown-divider"
-                                                                ></div>
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Remove</a
-                                                                >
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="avatar-xs me-3 mb-3"
-                                                    >
-                                                        <div
-                                                            class="avatar-title bg-transparent rounded"
-                                                        >
-                                                            <i
-                                                                class="bx bxs-folder font-size-24 text-warning"
-                                                            ></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div
-                                                            class="overflow-hidden me-auto"
-                                                        >
-                                                            <h5
-                                                                class="font-size-14 text-truncate mb-1"
-                                                            >
-                                                                <a
-                                                                    href="javascript: void(0);"
-                                                                    class="text-body"
-                                                                    >Design</a
-                                                                >
-                                                            </h5>
-                                                            <p
-                                                                class="text-muted text-truncate mb-0"
-                                                            >
-                                                                12 Files
-                                                            </p>
-                                                        </div>
-                                                        <div
-                                                            class="align-self-end ms-2"
-                                                        >
-                                                            <p
-                                                                class="text-muted mb-0"
-                                                            >
-                                                                6GB
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end col -->
-
-                                    <div class="col-xl-4 col-sm-6">
-                                        <div class="card shadow-none border">
-                                            <div class="card-body p-3">
-                                                <div class="">
-                                                    <div class="float-end ms-2">
-                                                        <div
-                                                            class="dropdown mb-2"
-                                                        >
-                                                            <a
-                                                                class="font-size-16 text-muted dropdown-toggle"
-                                                                role="button"
-                                                                data-bs-toggle="dropdown"
-                                                                aria-haspopup="true"
-                                                            >
-                                                                <i
-                                                                    class="mdi mdi-dots-horizontal"
-                                                                ></i>
-                                                            </a>
-
-                                                            <div
-                                                                class="dropdown-menu dropdown-menu-end"
-                                                            >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Open</a
-                                                                >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Edit</a
-                                                                >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Rename</a
-                                                                >
-                                                                <div
-                                                                    class="dropdown-divider"
-                                                                ></div>
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Remove</a
-                                                                >
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="avatar-xs me-3 mb-3"
-                                                    >
-                                                        <div
-                                                            class="avatar-title bg-transparent rounded"
-                                                        >
-                                                            <i
-                                                                class="bx bxs-folder font-size-24 text-warning"
-                                                            ></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div
-                                                            class="overflow-hidden me-auto"
-                                                        >
-                                                            <h5
-                                                                class="font-size-14 text-truncate mb-1"
-                                                            >
-                                                                <a
-                                                                    href="javascript: void(0);"
-                                                                    class="text-body"
-                                                                    >Development</a
-                                                                >
-                                                            </h5>
-                                                            <p
-                                                                class="text-muted text-truncate mb-0"
-                                                            >
-                                                                20 Files
-                                                            </p>
-                                                        </div>
-                                                        <div
-                                                            class="align-self-end ms-2"
-                                                        >
-                                                            <p
-                                                                class="text-muted mb-0"
-                                                            >
-                                                                8GB
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end col -->
-
-                                    <div class="col-xl-4 col-sm-6">
-                                        <div class="card shadow-none border">
-                                            <div class="card-body p-3">
-                                                <div class="">
-                                                    <div class="float-end ms-2">
-                                                        <div
-                                                            class="dropdown mb-2"
-                                                        >
-                                                            <a
-                                                                class="font-size-16 text-muted dropdown-toggle"
-                                                                role="button"
-                                                                data-bs-toggle="dropdown"
-                                                                aria-haspopup="true"
-                                                            >
-                                                                <i
-                                                                    class="mdi mdi-dots-horizontal"
-                                                                ></i>
-                                                            </a>
-
-                                                            <div
-                                                                class="dropdown-menu dropdown-menu-end"
-                                                            >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Open</a
-                                                                >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Edit</a
-                                                                >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Rename</a
-                                                                >
-                                                                <div
-                                                                    class="dropdown-divider"
-                                                                ></div>
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Remove</a
-                                                                >
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="avatar-xs me-3 mb-3"
-                                                    >
-                                                        <div
-                                                            class="avatar-title bg-transparent rounded"
-                                                        >
-                                                            <i
-                                                                class="bx bxs-folder font-size-24 text-warning"
-                                                            ></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div
-                                                            class="overflow-hidden me-auto"
-                                                        >
-                                                            <h5
-                                                                class="font-size-14 text-truncate mb-1"
-                                                            >
-                                                                <a
-                                                                    href="javascript: void(0);"
-                                                                    class="text-body"
-                                                                    >Project
-                                                                    A</a
-                                                                >
-                                                            </h5>
-                                                            <p
-                                                                class="text-muted text-truncate mb-0"
-                                                            >
-                                                                06 Files
-                                                            </p>
-                                                        </div>
-                                                        <div
-                                                            class="align-self-end ms-2"
-                                                        >
-                                                            <p
-                                                                class="text-muted mb-0"
-                                                            >
-                                                                2GB
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end col -->
-
-                                    <div class="col-xl-4 col-sm-6">
-                                        <div class="card shadow-none border">
-                                            <div class="card-body p-3">
-                                                <div class="">
-                                                    <div class="float-end ms-2">
-                                                        <div
-                                                            class="dropdown mb-2"
-                                                        >
-                                                            <a
-                                                                class="font-size-16 text-muted dropdown-toggle"
-                                                                role="button"
-                                                                data-bs-toggle="dropdown"
-                                                                aria-haspopup="true"
-                                                            >
-                                                                <i
-                                                                    class="mdi mdi-dots-horizontal"
-                                                                ></i>
-                                                            </a>
-
-                                                            <div
-                                                                class="dropdown-menu dropdown-menu-end"
-                                                            >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Open</a
-                                                                >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Edit</a
-                                                                >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Rename</a
-                                                                >
-                                                                <div
-                                                                    class="dropdown-divider"
-                                                                ></div>
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Remove</a
-                                                                >
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="avatar-xs me-3 mb-3"
-                                                    >
-                                                        <div
-                                                            class="avatar-title bg-transparent rounded"
-                                                        >
-                                                            <i
-                                                                class="bx bxs-folder font-size-24 text-warning"
-                                                            ></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div
-                                                            class="overflow-hidden me-auto"
-                                                        >
-                                                            <h5
-                                                                class="font-size-14 text-truncate mb-1"
-                                                            >
-                                                                <a
-                                                                    href="javascript: void(0);"
-                                                                    class="text-body"
-                                                                    >Admin</a
-                                                                >
-                                                            </h5>
-                                                            <p
-                                                                class="text-muted text-truncate mb-0"
-                                                            >
-                                                                08 Files
-                                                            </p>
-                                                        </div>
-                                                        <div
-                                                            class="align-self-end ms-2"
-                                                        >
-                                                            <p
-                                                                class="text-muted mb-0"
-                                                            >
-                                                                4GB
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end col -->
-
-                                    <div class="col-xl-4 col-sm-6">
-                                        <div class="card shadow-none border">
-                                            <div class="card-body p-3">
-                                                <div class="">
-                                                    <div class="float-end ms-2">
-                                                        <div
-                                                            class="dropdown mb-2"
-                                                        >
-                                                            <a
-                                                                class="font-size-16 text-muted dropdown-toggle"
-                                                                role="button"
-                                                                data-bs-toggle="dropdown"
-                                                                aria-haspopup="true"
-                                                            >
-                                                                <i
-                                                                    class="mdi mdi-dots-horizontal"
-                                                                ></i>
-                                                            </a>
-
-                                                            <div
-                                                                class="dropdown-menu dropdown-menu-end"
-                                                            >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Open</a
-                                                                >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Edit</a
-                                                                >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Rename</a
-                                                                >
-                                                                <div
-                                                                    class="dropdown-divider"
-                                                                ></div>
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Remove</a
-                                                                >
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="avatar-xs me-3 mb-3"
-                                                    >
-                                                        <div
-                                                            class="avatar-title bg-transparent rounded"
-                                                        >
-                                                            <i
-                                                                class="bx bxs-folder font-size-24 text-warning"
-                                                            ></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div
-                                                            class="overflow-hidden me-auto"
-                                                        >
-                                                            <h5
-                                                                class="font-size-14 text-truncate mb-1"
-                                                            >
-                                                                <a
-                                                                    href="javascript: void(0);"
-                                                                    class="text-body"
-                                                                    >Sketch
-                                                                    Design</a
-                                                                >
-                                                            </h5>
-                                                            <p
-                                                                class="text-muted text-truncate mb-0"
-                                                            >
-                                                                12 Files
-                                                            </p>
-                                                        </div>
-                                                        <div
-                                                            class="align-self-end ms-2"
-                                                        >
-                                                            <p
-                                                                class="text-muted mb-0"
-                                                            >
-                                                                6GB
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end col -->
-
-                                    <div class="col-xl-4 col-sm-6">
-                                        <div class="card shadow-none border">
-                                            <div class="card-body p-3">
-                                                <div class="">
-                                                    <div class="float-end ms-2">
-                                                        <div
-                                                            class="dropdown mb-2"
-                                                        >
-                                                            <a
-                                                                class="font-size-16 text-muted dropdown-toggle"
-                                                                role="button"
-                                                                data-bs-toggle="dropdown"
-                                                                aria-haspopup="true"
-                                                            >
-                                                                <i
-                                                                    class="mdi mdi-dots-horizontal"
-                                                                ></i>
-                                                            </a>
-
-                                                            <div
-                                                                class="dropdown-menu dropdown-menu-end"
-                                                            >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Open</a
-                                                                >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Edit</a
-                                                                >
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Rename</a
-                                                                >
-                                                                <div
-                                                                    class="dropdown-divider"
-                                                                ></div>
-                                                                <a
-                                                                    class="dropdown-item"
-                                                                    href="#"
-                                                                    >Remove</a
-                                                                >
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="avatar-xs me-3 mb-3"
-                                                    >
-                                                        <div
-                                                            class="avatar-title bg-transparent rounded"
-                                                        >
-                                                            <i
-                                                                class="bx bxs-folder font-size-24 text-warning"
-                                                            ></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex">
-                                                        <div
-                                                            class="overflow-hidden me-auto"
-                                                        >
-                                                            <h5
-                                                                class="font-size-14 text-truncate mb-1"
-                                                            >
-                                                                <a
-                                                                    href="javascript: void(0);"
-                                                                    class="text-body"
-                                                                    >Applications</a
-                                                                >
-                                                            </h5>
-                                                            <p
-                                                                class="text-muted text-truncate mb-0"
-                                                            >
-                                                                20 Files
-                                                            </p>
-                                                        </div>
-                                                        <div
-                                                            class="align-self-end ms-2"
-                                                        >
-                                                            <p
-                                                                class="text-muted mb-0"
-                                                            >
-                                                                8GB
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end col -->
-                                </div>
-                                <!-- end row -->
-                            </div>
-
-                            <div class="mt-4">
-                                <div class="d-flex flex-wrap">
-                                    <h5 class="font-size-16 me-3">
-                                        Recent Files
-                                    </h5>
-
-                                    <div class="ms-auto">
-                                        <a
-                                            href="javascript: void(0);"
-                                            class="fw-medium text-reset"
-                                            >View All</a
-                                        >
-                                    </div>
-                                </div>
-                                <hr class="mt-2" />
-
-                                <div class="table-responsive">
-                                    <table
-                                        class="table align-middle table-nowrap table-hover mb-0"
+                                {{ folders }}
+                                <ul>
+                                    <li
+                                        v-for="(folder, index) in folders"
+                                        :key="index"
                                     >
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">
-                                                    Date modified
-                                                </th>
-                                                <th scope="col" colspan="2">
-                                                    Size
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a
-                                                        href="javascript: void(0);"
-                                                        class="text-dark fw-medium"
-                                                        ><i
-                                                            class="mdi mdi-file-document font-size-16 align-middle text-primary me-2"
-                                                        ></i>
-                                                        index</a
-                                                    >
-                                                </td>
-                                                <td>12-10-2020, 09:45</td>
-                                                <td>09 KB</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a
-                                                            class="font-size-16 text-muted dropdown-toggle"
-                                                            role="button"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-haspopup="true"
-                                                        >
-                                                            <i
-                                                                class="mdi mdi-dots-horizontal"
-                                                            ></i>
-                                                        </a>
-
-                                                        <div
-                                                            class="dropdown-menu dropdown-menu-end"
-                                                        >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Open</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Edit</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Rename</a
-                                                            >
-                                                            <div
-                                                                class="dropdown-divider"
-                                                            ></div>
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Remove</a
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a
-                                                        href="javascript: void(0);"
-                                                        class="text-dark fw-medium"
-                                                        ><i
-                                                            class="mdi mdi-folder-zip font-size-16 align-middle text-warning me-2"
-                                                        ></i>
-                                                        Project-A.zip</a
-                                                    >
-                                                </td>
-                                                <td>11-10-2020, 17:05</td>
-                                                <td>115 KB</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a
-                                                            class="font-size-16 text-muted dropdown-toggle"
-                                                            role="button"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-haspopup="true"
-                                                        >
-                                                            <i
-                                                                class="mdi mdi-dots-horizontal"
-                                                            ></i>
-                                                        </a>
-
-                                                        <div
-                                                            class="dropdown-menu dropdown-menu-end"
-                                                        >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Open</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Edit</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Rename</a
-                                                            >
-                                                            <div
-                                                                class="dropdown-divider"
-                                                            ></div>
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Remove</a
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a
-                                                        href="javascript: void(0);"
-                                                        class="text-dark fw-medium"
-                                                        ><i
-                                                            class="mdi mdi-image font-size-16 align-middle text-muted me-2"
-                                                        ></i>
-                                                        Img-1.jpeg</a
-                                                    >
-                                                </td>
-                                                <td>11-10-2020, 13:26</td>
-                                                <td>86 KB</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a
-                                                            class="font-size-16 text-muted dropdown-toggle"
-                                                            role="button"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-haspopup="true"
-                                                        >
-                                                            <i
-                                                                class="mdi mdi-dots-horizontal"
-                                                            ></i>
-                                                        </a>
-
-                                                        <div
-                                                            class="dropdown-menu dropdown-menu-end"
-                                                        >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Open</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Edit</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Rename</a
-                                                            >
-                                                            <div
-                                                                class="dropdown-divider"
-                                                            ></div>
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Remove</a
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a
-                                                        href="javascript: void(0);"
-                                                        class="text-dark fw-medium"
-                                                        ><i
-                                                            class="mdi mdi-text-box font-size-16 align-middle text-muted me-2"
-                                                        ></i>
-                                                        update list.txt</a
-                                                    >
-                                                </td>
-                                                <td>10-10-2020, 11:32</td>
-                                                <td>08 KB</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a
-                                                            class="font-size-16 text-muted dropdown-toggle"
-                                                            role="button"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-haspopup="true"
-                                                        >
-                                                            <i
-                                                                class="mdi mdi-dots-horizontal"
-                                                            ></i>
-                                                        </a>
-
-                                                        <div
-                                                            class="dropdown-menu dropdown-menu-end"
-                                                        >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Open</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Edit</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Rename</a
-                                                            >
-                                                            <div
-                                                                class="dropdown-divider"
-                                                            ></div>
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Remove</a
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a
-                                                        href="javascript: void(0);"
-                                                        class="text-dark fw-medium"
-                                                        ><i
-                                                            class="mdi mdi-folder font-size-16 align-middle text-warning me-2"
-                                                        ></i>
-                                                        Project B</a
-                                                    >
-                                                </td>
-                                                <td>10-10-2020, 10:51</td>
-                                                <td>72 KB</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a
-                                                            class="font-size-16 text-muted dropdown-toggle"
-                                                            role="button"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-haspopup="true"
-                                                        >
-                                                            <i
-                                                                class="mdi mdi-dots-horizontal"
-                                                            ></i>
-                                                        </a>
-
-                                                        <div
-                                                            class="dropdown-menu dropdown-menu-end"
-                                                        >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Open</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Edit</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Rename</a
-                                                            >
-                                                            <div
-                                                                class="dropdown-divider"
-                                                            ></div>
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Remove</a
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a
-                                                        href="javascript: void(0);"
-                                                        class="text-dark fw-medium"
-                                                        ><i
-                                                            class="mdi mdi-text-box font-size-16 align-middle text-muted me-2"
-                                                        ></i>
-                                                        Changes list.txt</a
-                                                    >
-                                                </td>
-                                                <td>09-10-2020, 17:05</td>
-                                                <td>07 KB</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a
-                                                            class="font-size-16 text-muted dropdown-toggle"
-                                                            role="button"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-haspopup="true"
-                                                        >
-                                                            <i
-                                                                class="mdi mdi-dots-horizontal"
-                                                            ></i>
-                                                        </a>
-
-                                                        <div
-                                                            class="dropdown-menu dropdown-menu-end"
-                                                        >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Open</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Edit</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Rename</a
-                                                            >
-                                                            <div
-                                                                class="dropdown-divider"
-                                                            ></div>
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Remove</a
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a
-                                                        href="javascript: void(0);"
-                                                        class="text-dark fw-medium"
-                                                        ><i
-                                                            class="mdi mdi-image font-size-16 align-middle text-success me-2"
-                                                        ></i>
-                                                        Img-2.png</a
-                                                    >
-                                                </td>
-                                                <td>09-10-2020, 15:12</td>
-                                                <td>31 KB</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a
-                                                            class="font-size-16 text-muted dropdown-toggle"
-                                                            role="button"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-haspopup="true"
-                                                        >
-                                                            <i
-                                                                class="mdi mdi-dots-horizontal"
-                                                            ></i>
-                                                        </a>
-
-                                                        <div
-                                                            class="dropdown-menu dropdown-menu-end"
-                                                        >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Open</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Edit</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Rename</a
-                                                            >
-                                                            <div
-                                                                class="dropdown-divider"
-                                                            ></div>
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Remove</a
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a
-                                                        href="javascript: void(0);"
-                                                        class="text-dark fw-medium"
-                                                        ><i
-                                                            class="mdi mdi-folder font-size-16 align-middle text-warning me-2"
-                                                        ></i>
-                                                        Project C</a
-                                                    >
-                                                </td>
-                                                <td>09-10-2020, 10:11</td>
-                                                <td>20 KB</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a
-                                                            class="font-size-16 text-muted dropdown-toggle"
-                                                            role="button"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-haspopup="true"
-                                                        >
-                                                            <i
-                                                                class="mdi mdi-dots-horizontal"
-                                                            ></i>
-                                                        </a>
-
-                                                        <div
-                                                            class="dropdown-menu dropdown-menu-end"
-                                                        >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Open</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Edit</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Rename</a
-                                                            >
-                                                            <div
-                                                                class="dropdown-divider"
-                                                            ></div>
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Remove</a
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a
-                                                        href="javascript: void(0);"
-                                                        class="text-dark fw-medium"
-                                                        ><i
-                                                            class="bx bxs-file font-size-16 align-middle text-primary me-2"
-                                                        ></i>
-                                                        starter-page</a
-                                                    >
-                                                </td>
-                                                <td>08-10-2020, 03:22</td>
-                                                <td>11 KB</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a
-                                                            class="font-size-16 text-muted dropdown-toggle"
-                                                            role="button"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-haspopup="true"
-                                                        >
-                                                            <i
-                                                                class="mdi mdi-dots-horizontal"
-                                                            ></i>
-                                                        </a>
-
-                                                        <div
-                                                            class="dropdown-menu dropdown-menu-end"
-                                                        >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Open</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Edit</a
-                                                            >
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Rename</a
-                                                            >
-                                                            <div
-                                                                class="dropdown-divider"
-                                                            ></div>
-                                                            <a
-                                                                class="dropdown-item"
-                                                                href="#"
-                                                                >Remove</a
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        {{ folder.name }}
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -1261,153 +167,103 @@
                             </div>
                         </a>
                     </div>
-
-                    <div class="card border shadow-none mb-2">
-                        <a href="javascript: void(0);" class="text-body">
-                            <div class="p-2">
-                                <div class="d-flex">
-                                    <div
-                                        class="avatar-xs align-self-center me-2"
-                                    >
-                                        <div
-                                            class="avatar-title rounded bg-transparent text-danger font-size-20"
-                                        >
-                                            <i
-                                                class="mdi mdi-play-circle-outline"
-                                            ></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="overflow-hidden me-auto">
-                                        <h5
-                                            class="font-size-13 text-truncate mb-1"
-                                        >
-                                            Video
-                                        </h5>
-                                        <p
-                                            class="text-muted text-truncate mb-0"
-                                        >
-                                            45 Files
-                                        </p>
-                                    </div>
-
-                                    <div class="ms-2">
-                                        <p class="text-muted">4.1 GB</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="card border shadow-none mb-2">
-                        <a href="javascript: void(0);" class="text-body">
-                            <div class="p-2">
-                                <div class="d-flex">
-                                    <div
-                                        class="avatar-xs align-self-center me-2"
-                                    >
-                                        <div
-                                            class="avatar-title rounded bg-transparent text-info font-size-20"
-                                        >
-                                            <i class="mdi mdi-music"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="overflow-hidden me-auto">
-                                        <h5
-                                            class="font-size-13 text-truncate mb-1"
-                                        >
-                                            Music
-                                        </h5>
-                                        <p
-                                            class="text-muted text-truncate mb-0"
-                                        >
-                                            21 Files
-                                        </p>
-                                    </div>
-
-                                    <div class="ms-2">
-                                        <p class="text-muted">3.2 GB</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="card border shadow-none mb-2">
-                        <a href="javascript: void(0);" class="text-body">
-                            <div class="p-2">
-                                <div class="d-flex">
-                                    <div
-                                        class="avatar-xs align-self-center me-2"
-                                    >
-                                        <div
-                                            class="avatar-title rounded bg-transparent text-primary font-size-20"
-                                        >
-                                            <i
-                                                class="mdi mdi-file-document"
-                                            ></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="overflow-hidden me-auto">
-                                        <h5
-                                            class="font-size-13 text-truncate mb-1"
-                                        >
-                                            Document
-                                        </h5>
-                                        <p
-                                            class="text-muted text-truncate mb-0"
-                                        >
-                                            21 Files
-                                        </p>
-                                    </div>
-
-                                    <div class="ms-2">
-                                        <p class="text-muted">2 GB</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="card border shadow-none">
-                        <a href="javascript: void(0);" class="text-body">
-                            <div class="p-2">
-                                <div class="d-flex">
-                                    <div
-                                        class="avatar-xs align-self-center me-2"
-                                    >
-                                        <div
-                                            class="avatar-title rounded bg-transparent text-warning font-size-20"
-                                        >
-                                            <i class="mdi mdi-folder"></i>
-                                        </div>
-                                    </div>
-
-                                    <div class="overflow-hidden me-auto">
-                                        <h5
-                                            class="font-size-13 text-truncate mb-1"
-                                        >
-                                            Others
-                                        </h5>
-                                        <p
-                                            class="text-muted text-truncate mb-0"
-                                        >
-                                            20 Files
-                                        </p>
-                                    </div>
-
-                                    <div class="ms-2">
-                                        <p class="text-muted">1.4 GB</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal tạo folder -->
+    <div
+        class="modal fade"
+        id="folderModal"
+        tabindex="-1"
+        aria-labelledby="folderModalLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="folderModalLabel">
+                        {{ __("Create Folder") }}
+                    </h5>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    <input
+                        type="text"
+                        :value="newFolderName"
+                        @input="onFolderNameInput"
+                        class="form-control"
+                        placeholder="Folder name"
+                    />
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">
+                        {{ __("Close") }}
+                    </button>
+                    <button class="btn btn-primary" @click="createFolder">
+                        {{ __("Create") }}
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </template>
-<script setup></script>
+<script setup>
+import axios from "axios";
+import { onMounted, ref } from "vue";
+
+const folders = ref([]);
+const files = ref([]);
+
+const newFolderName = ref("");
+const currentFolderId = ref(0);
+
+const onFolderNameInput = (event) => {
+    newFolderName.value = event.target.value;
+};
+
+const createFolder = async () => {
+    if (!newFolderName.value.trim()) return;
+
+    try {
+        const response = await axios.post(route("media.folders.create"), {
+            name: newFolderName.value,
+            parent_id: currentFolderId.value,
+        });
+        if (!response.data.error) {
+            newFolderName.value = "";
+            showFolderModal.value = false;
+            await fetchMedia(currentFolderId.value);
+        } else {
+            alert(response.data.message || "Error creating folder");
+        }
+    } catch (err) {
+        console.error(err);
+        alert("Error creating folder");
+    }
+};
+
+const openFolder = async (folderId) => {
+    await fetchMedia(folderId);
+};
+
+const fetchMedia = async (folderId) => {
+    try {
+        const response = await axios.get(route("media.list"), {
+            params: { folder_id: folderId },
+        });
+        folders.value = response.data || [];
+        console.log(folders.value);
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+};
+// Gọi khi vào trang
+onMounted(() => {
+    fetchMedia(currentFolderId.value);
+});
+</script>

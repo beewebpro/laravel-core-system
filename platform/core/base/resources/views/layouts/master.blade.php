@@ -11,6 +11,7 @@
     <meta content="BNG System" name="description" />
     <meta content="BNG" name="author" />
     <link rel="shortcut icon" href="{{ URL::asset('vendor/core/core/base/images/favicon.ico') }}">
+    @routes
     @include('core/base::layouts.head-css')
     @stack('header')
 </head>
