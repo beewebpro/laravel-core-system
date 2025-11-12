@@ -10,13 +10,22 @@ use Illuminate\Http\Request;
 class MediaController extends BaseController
 {
 
-  public function getMedia()
+  public function getMedia(Request $request)
   {
     $this->pageTitle(trans('core/media::media.name'));
     Assets::initVueJS();
     Assets::addScriptsDirectly('vendor/core/core/media/js/media.js?t=' . time());
 
-    return view('core/media::index');
+    $files = [];
+    $folders = [];
+    $folderId = $request->input('folder_id', 0);
+
+    $folders = MediaFolder::query()
+      ->where('parent_id', $folderId)
+      ->orderBy('created_at', 'desc')
+      ->get();
+
+    return view('core/media::index', compact('folders'));
   }
 
   public function getList(Request $request)
@@ -32,16 +41,10 @@ class MediaController extends BaseController
       ->orderBy('created_at', 'desc')
       ->get();
 
-    $data = [
-      'files' => $files,
-      'folders' => $folders,
-    ];
-    return response()->json([
-      'error' => false,
-      'data' => $data,
-      'message' => $message,
-    ]);
+
+    return response()->json($folders);
   }
+
   public function getPopup(Request $request) {}
   public function download(Request $request) {}
   public function store(Request $request) {}

@@ -13618,7 +13618,10 @@ function initFeatureFlags() {
   const needWarn = [];
   if (false) {}
   if (false) {}
-  if (false) {}
+  if (typeof __VUE_PROD_HYDRATION_MISMATCH_DETAILS__ !== "boolean") {
+     true && needWarn.push(`__VUE_PROD_HYDRATION_MISMATCH_DETAILS__`);
+    (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.getGlobalThis)().__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ = false;
+  }
   if ( true && needWarn.length) {
     const multi = needWarn.length > 1;
     console.warn(
@@ -20209,126 +20212,50 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
   setup: function setup(__props, _ref) {
     var __expose = _ref.expose;
     __expose();
-    var folders = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
-    var files = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
-    var newFolderName = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("");
+    var folderLists = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([]);
     var currentFolderId = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
-    var onFolderNameInput = function onFolderNameInput(event) {
-      newFolderName.value = event.target.value;
-    };
-    var createFolder = /*#__PURE__*/function () {
+    var fetchMedia = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var response;
+        var folderId,
+          response,
+          _args = arguments;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              if (newFolderName.value.trim()) {
-                _context.next = 2;
-                break;
-              }
-              return _context.abrupt("return");
-            case 2:
-              _context.prev = 2;
-              _context.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1__["default"].post(route("media.folders.create"), {
-                name: newFolderName.value,
-                parent_id: currentFolderId.value
-              });
-            case 5:
-              response = _context.sent;
-              if (response.data.error) {
-                _context.next = 13;
-                break;
-              }
-              newFolderName.value = "";
-              showFolderModal.value = false;
-              _context.next = 11;
-              return fetchMedia(currentFolderId.value);
-            case 11:
-              _context.next = 14;
-              break;
-            case 13:
-              alert(response.data.message || "Error creating folder");
-            case 14:
-              _context.next = 20;
-              break;
-            case 16:
-              _context.prev = 16;
-              _context.t0 = _context["catch"](2);
-              console.error(_context.t0);
-              alert("Error creating folder");
-            case 20:
-            case "end":
-              return _context.stop();
-          }
-        }, _callee, null, [[2, 16]]);
-      }));
-      return function createFolder() {
-        return _ref2.apply(this, arguments);
-      };
-    }();
-    var openFolder = /*#__PURE__*/function () {
-      var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(folderId) {
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return fetchMedia(folderId);
-            case 2:
-            case "end":
-              return _context2.stop();
-          }
-        }, _callee2);
-      }));
-      return function openFolder(_x) {
-        return _ref3.apply(this, arguments);
-      };
-    }();
-    var fetchMedia = /*#__PURE__*/function () {
-      var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(folderId) {
-        var response;
-        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-          while (1) switch (_context3.prev = _context3.next) {
-            case 0:
-              _context3.prev = 0;
-              _context3.next = 3;
+              folderId = _args.length > 0 && _args[0] !== undefined ? _args[0] : 0;
+              _context.prev = 1;
+              _context.next = 4;
               return axios__WEBPACK_IMPORTED_MODULE_1__["default"].get(route("media.list"), {
                 params: {
                   folder_id: folderId
                 }
               });
-            case 3:
-              response = _context3.sent;
-              folders.value = response.data || [];
-              console.log(folders.value);
-              _context3.next = 11;
+            case 4:
+              response = _context.sent;
+              folderLists.value = response.data;
+              console.log(response.data);
+              _context.next = 12;
               break;
-            case 8:
-              _context3.prev = 8;
-              _context3.t0 = _context3["catch"](0);
-              console.error("Error fetching data:", _context3.t0);
-            case 11:
+            case 9:
+              _context.prev = 9;
+              _context.t0 = _context["catch"](1);
+              console.error("Error fetching data:", _context.t0);
+            case 12:
             case "end":
-              return _context3.stop();
+              return _context.stop();
           }
-        }, _callee3, null, [[0, 8]]);
+        }, _callee, null, [[1, 9]]);
       }));
-      return function fetchMedia(_x2) {
-        return _ref4.apply(this, arguments);
+      return function fetchMedia() {
+        return _ref2.apply(this, arguments);
       };
     }();
-    // Gọi khi vào trang
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
       fetchMedia(currentFolderId.value);
     });
     var __returned__ = {
-      folders: folders,
-      files: files,
-      newFolderName: newFolderName,
+      folderLists: folderLists,
       currentFolderId: currentFolderId,
-      onFolderNameInput: onFolderNameInput,
-      createFolder: createFolder,
-      openFolder: openFolder,
       fetchMedia: fetchMedia,
       get axios() {
         return axios__WEBPACK_IMPORTED_MODULE_1__["default"];
@@ -20415,39 +20342,8 @@ var _hoisted_16 = {
   "class": "dropdown-item",
   href: "#"
 };
-var _hoisted_17 = {
-  "class": "modal fade",
-  id: "folderModal",
-  tabindex: "-1",
-  "aria-labelledby": "folderModalLabel",
-  "aria-hidden": "true"
-};
-var _hoisted_18 = {
-  "class": "modal-dialog"
-};
-var _hoisted_19 = {
-  "class": "modal-content"
-};
-var _hoisted_20 = {
-  "class": "modal-header"
-};
-var _hoisted_21 = {
-  "class": "modal-title",
-  id: "folderModalLabel"
-};
-var _hoisted_22 = {
-  "class": "modal-body"
-};
-var _hoisted_23 = ["value"];
-var _hoisted_24 = {
-  "class": "modal-footer"
-};
-var _hoisted_25 = {
-  "class": "btn btn-secondary",
-  "data-bs-dismiss": "modal"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("Media")), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_13, [_cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("Media")), 1 /* TEXT */)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_13, [_cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "mdi mdi-plus me-1"
   }, null, -1 /* CACHED */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("Create New")), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_15, [_cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
     "class": "bx bx-folder me-1"
@@ -20483,24 +20379,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, "Share with me"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     "class": "dropdown-item",
     href: "#"
-  }, "Other Actions")])], -1 /* CACHED */))])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.folders) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.folders, function (folder, index) {
+  }, "Other Actions")])], -1 /* CACHED */))])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.folderLists, function (folder, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", {
-      key: index
+      key: folder.id
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(folder.name), 1 /* TEXT */);
-  }), 128 /* KEYED_FRAGMENT */))])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end card ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end w-100 ")])]), _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card filemanager-sidebar ms-lg-2\"><div class=\"card-body\"><div class=\"text-center\"><h5 class=\"font-size-15 mb-4\">Storage</h5><div class=\"apex-charts\" id=\"radial-chart\"></div><p class=\"text-muted mt-4\">48.02 GB (76%) of 64 GB used</p></div><div class=\"mt-4\"><div class=\"card border shadow-none mb-2\"><a href=\"javascript: void(0);\" class=\"text-body\"><div class=\"p-2\"><div class=\"d-flex\"><div class=\"avatar-xs align-self-center me-2\"><div class=\"avatar-title rounded bg-transparent text-success font-size-20\"><i class=\"mdi mdi-image\"></i></div></div><div class=\"overflow-hidden me-auto\"><h5 class=\"font-size-13 text-truncate mb-1\"> Images </h5><p class=\"text-muted text-truncate mb-0\"> 176 Files </p></div><div class=\"ms-2\"><p class=\"text-muted\">6 GB</p></div></div></div></a></div></div></div></div>", 1))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal tạo folder "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("Create Folder")), 1 /* TEXT */), _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    type: "button",
-    "class": "btn-close",
-    "data-bs-dismiss": "modal"
-  }, null, -1 /* CACHED */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    value: $setup.newFolderName,
-    onInput: $setup.onFolderNameInput,
-    "class": "form-control",
-    placeholder: "Folder name"
-  }, null, 40 /* PROPS, NEED_HYDRATION */, _hoisted_23)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("Close")), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    "class": "btn btn-primary",
-    onClick: $setup.createFolder
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.__("Create")), 1 /* TEXT */)])])])])], 64 /* STABLE_FRAGMENT */);
+  }), 128 /* KEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("pre", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.folderLists), 1 /* TEXT */)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end card ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end w-100 ")])]), _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card filemanager-sidebar ms-lg-2\"><div class=\"card-body\"><div class=\"text-center\"><h5 class=\"font-size-15 mb-4\">Storage</h5><div class=\"apex-charts\" id=\"radial-chart\"></div><p class=\"text-muted mt-4\">48.02 GB (76%) of 64 GB used</p></div><div class=\"mt-4\"><div class=\"card border shadow-none mb-2\"><a href=\"javascript: void(0);\" class=\"text-body\"><div class=\"p-2\"><div class=\"d-flex\"><div class=\"avatar-xs align-self-center me-2\"><div class=\"avatar-title rounded bg-transparent text-success font-size-20\"><i class=\"mdi mdi-image\"></i></div></div><div class=\"overflow-hidden me-auto\"><h5 class=\"font-size-13 text-truncate mb-1\"> Images </h5><p class=\"text-muted text-truncate mb-0\"> 176 Files </p></div><div class=\"ms-2\"><p class=\"text-muted\">6 GB</p></div></div></div></a></div></div></div></div>", 1))]);
 }
 
 /***/ }),

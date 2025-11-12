@@ -1,5 +1,5 @@
 @extends('core/base::layouts.master')
 
 @section('content')
-    <media />
+    <media :folders='@json($folders)' />
 @stop

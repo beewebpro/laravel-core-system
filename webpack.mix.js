@@ -11,18 +11,18 @@ mix.options({
     manifest: false,
 });
 
-mix.webpackConfig({
-    stats: {
-        children: false,
-    },
-    plugins: [
-        new webpack.DefinePlugin({
-            __VUE_PROD_DEVTOOLS__: false,
-            __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false,
-            __VUE_OPTIONS_API__: true,
-        }),
-    ],
-});
+// mix.webpackConfig({
+//     stats: {
+//         children: false,
+//     },
+//     plugins: [
+//         new webpack.DefinePlugin({
+//             __VUE_PROD_DEVTOOLS__: false,
+//             __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false,
+//             __VUE_OPTIONS_API__: true,
+//         }),
+//     ],
+// });
 
 mix.vue();
 

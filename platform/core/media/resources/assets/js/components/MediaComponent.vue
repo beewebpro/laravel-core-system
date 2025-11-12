@@ -105,15 +105,15 @@
                             </div>
 
                             <div>
-                                {{ folders }}
                                 <ul>
                                     <li
-                                        v-for="(folder, index) in folders"
-                                        :key="index"
+                                        v-for="(folder, index) in folderLists"
+                                        :key="folder.id"
                                     >
                                         {{ folder.name }}
                                     </li>
                                 </ul>
+                                <pre>{{ folderLists }}</pre>
                             </div>
                         </div>
                     </div>
@@ -171,98 +171,26 @@
             </div>
         </div>
     </div>
-    <!-- Modal tạo folder -->
-    <div
-        class="modal fade"
-        id="folderModal"
-        tabindex="-1"
-        aria-labelledby="folderModalLabel"
-        aria-hidden="true"
-    >
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="folderModalLabel">
-                        {{ __("Create Folder") }}
-                    </h5>
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                    ></button>
-                </div>
-                <div class="modal-body">
-                    <input
-                        type="text"
-                        :value="newFolderName"
-                        @input="onFolderNameInput"
-                        class="form-control"
-                        placeholder="Folder name"
-                    />
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">
-                        {{ __("Close") }}
-                    </button>
-                    <button class="btn btn-primary" @click="createFolder">
-                        {{ __("Create") }}
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 </template>
 <script setup>
 import axios from "axios";
 import { onMounted, ref } from "vue";
 
-const folders = ref([]);
-const files = ref([]);
-
-const newFolderName = ref("");
+const folderLists = ref([]);
 const currentFolderId = ref(0);
 
-const onFolderNameInput = (event) => {
-    newFolderName.value = event.target.value;
-};
-
-const createFolder = async () => {
-    if (!newFolderName.value.trim()) return;
-
-    try {
-        const response = await axios.post(route("media.folders.create"), {
-            name: newFolderName.value,
-            parent_id: currentFolderId.value,
-        });
-        if (!response.data.error) {
-            newFolderName.value = "";
-            showFolderModal.value = false;
-            await fetchMedia(currentFolderId.value);
-        } else {
-            alert(response.data.message || "Error creating folder");
-        }
-    } catch (err) {
-        console.error(err);
-        alert("Error creating folder");
-    }
-};
-
-const openFolder = async (folderId) => {
-    await fetchMedia(folderId);
-};
-
-const fetchMedia = async (folderId) => {
+const fetchMedia = async (folderId = 0) => {
     try {
         const response = await axios.get(route("media.list"), {
             params: { folder_id: folderId },
         });
-        folders.value = response.data || [];
-        console.log(folders.value);
+        folderLists.value = response.data;
+        console.log(response.data);
     } catch (error) {
         console.error("Error fetching data:", error);
     }
 };
-// Gọi khi vào trang
+
 onMounted(() => {
     fetchMedia(currentFolderId.value);
 });
