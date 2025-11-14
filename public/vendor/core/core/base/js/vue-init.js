@@ -13618,10 +13618,7 @@ function initFeatureFlags() {
   const needWarn = [];
   if (false) {}
   if (false) {}
-  if (typeof __VUE_PROD_HYDRATION_MISMATCH_DETAILS__ !== "boolean") {
-     true && needWarn.push(`__VUE_PROD_HYDRATION_MISMATCH_DETAILS__`);
-    (0,_vue_shared__WEBPACK_IMPORTED_MODULE_1__.getGlobalThis)().__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ = false;
-  }
+  if (false) {}
   if ( true && needWarn.length) {
     const multi = needWarn.length > 1;
     console.warn(
@@ -51166,92 +51163,97 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 var VueApp = /*#__PURE__*/function () {
   function VueApp() {
     _classCallCheck(this, VueApp);
-    // Tạo một instance Vue trống
-    this.app = (0,vue__WEBPACK_IMPORTED_MODULE_2__.createApp)({});
+    // Tạo app Vue rỗng
+    this.app = (0,vue__WEBPACK_IMPORTED_MODULE_2__.createApp)({
+      mounted: function mounted() {
+        var _this = this;
+        // Giống bản cũ: cho phép ép Vue re-render
+        this.$event.on("vue-init:force-update", function () {
+          _this.$forceUpdate();
+        });
+      }
+    });
 
-    // Tạo event bus (mitt) cho app, gắn vào globalProperties
+    // Event bus (mitt)
     this.event = (0,mitt__WEBPACK_IMPORTED_MODULE_0__["default"])();
 
-    // Các mảng lưu callback cho booting/booted hooks
-    this.bootingHooks = [];
-    this.bootedHooks = [];
+    // Gắn vào globalProperties
+    this.app.config.globalProperties.$event = this.event;
 
-    // Mảng lưu plugin Vue sẽ sử dụng
-    this.plugins = [];
-
-    // Trạng thái đã mount chưa
-    this.isBooted = false;
-
-    // Globale helpers
-    // Nếu không có key, trả về chính key
+    // Helpers global
     this.app.config.globalProperties.__ = function (key) {
+      if (typeof window.trans === "undefined") {
+        return key;
+      }
       return lodash__WEBPACK_IMPORTED_MODULE_1___default().get(window.trans, key, key);
     };
-
-    // $sanitize: lọc HTML
     this.app.config.globalProperties.$sanitize = (sanitize_html__WEBPACK_IMPORTED_MODULE_3___default());
-
-    // $httpClient: giả lập axios / ajax client toàn cục
     this.app.config.globalProperties.$httpClient = window.$httpClient;
 
-    // $event: gắn event bus toàn cục vào Vue
-    this.app.config.globalProperties.$event = this.event;
+    // Plugin & hook system
+    this.plugins = [];
+    this.bootingHooks = [];
+    this.bootedHooks = [];
+    this.isBooted = false;
   }
 
-  // Đăng ký plugin Vue, lưu vào mảng plugins
+  // Giống registerVuePlugins() bản cũ
   return _createClass(VueApp, [{
-    key: "use",
-    value: function use(plugin) {
+    key: "registerPlugins",
+    value: function registerPlugins(plugin) {
       this.plugins.push(plugin);
-      return this;
     }
 
-    // Thêm callback chạy **trước khi mount**
+    // Booting & booted callbacks
   }, {
     key: "booting",
     value: function booting(callback) {
       this.bootingHooks.push(callback);
-      return this;
     }
-
-    // Thêm callback chạy **sau khi mount**
   }, {
     key: "booted",
     value: function booted(callback) {
       this.bootedHooks.push(callback);
-      return this;
     }
 
-    // Thực hiện mount Vue app
+    // Boot Vue
   }, {
     key: "boot",
     value: function boot() {
-      var _this = this;
-      var seletor = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "#layout-wrapper";
-      if (this.isBooted) {
-        return;
-      }
-      this.bootingHooks.forEach(function (callback) {
-        return callback(_this.app);
+      var _this2 = this;
+      var selector = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "#app";
+      if (this.isBooted) return;
+
+      // Chạy hook trước khi mount
+      this.bootingHooks.forEach(function (cb) {
+        return cb(_this2.app);
       });
+
+      // Dùng các plugin đã đăng ký
       this.plugins.forEach(function (plugin) {
-        return _this.app.use(plugin);
+        return _this2.app.use(plugin);
       });
-      this.app.mount(seletor);
-      this.bootedHooks.forEach(function (callback) {
-        return callback(_this);
+
+      // Mount
+      this.app.mount(selector);
+
+      // Chạy hook sau mount
+      this.bootedHooks.forEach(function (cb) {
+        return cb(_this2);
       });
       this.isBooted = true;
     }
   }]);
-}(); // Tạo instance vueApp toàn cục
+}(); // Instance global
 
 var vueApp = new VueApp();
 window.vueApp = vueApp;
 
-// Tự động boot app khi DOM đã load
+// Boot khi DOM sẵn sàng
 document.addEventListener("DOMContentLoaded", function () {
-  vueApp.boot();
+  if (!window.vueApp.isBooted) {
+    window.vueApp.boot();
+  }
 });
 })();
 

@@ -66,54 +66,45 @@
                                                     ></i>
                                                 </div>
                                             </div>
-
-                                            <div class="dropdown mb-0">
-                                                <a
-                                                    class="btn btn-link text-muted dropdown-toggle mt-n2"
-                                                    role="button"
-                                                    data-bs-toggle="dropdown"
-                                                    aria-haspopup="true"
-                                                >
-                                                    <i
-                                                        class="mdi mdi-dots-vertical font-size-20"
-                                                    ></i>
-                                                </a>
-
-                                                <div
-                                                    class="dropdown-menu dropdown-menu-end"
-                                                >
-                                                    <a
-                                                        class="dropdown-item"
-                                                        href="#"
-                                                        >Share Files</a
-                                                    >
-                                                    <a
-                                                        class="dropdown-item"
-                                                        href="#"
-                                                        >Share with me</a
-                                                    >
-                                                    <a
-                                                        class="dropdown-item"
-                                                        href="#"
-                                                        >Other Actions</a
-                                                    >
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div>
-                                <ul>
-                                    <li
+                                <div class="row">
+                                    <div
+                                        class="col-xl-2 col-sm-3"
                                         v-for="(folder, index) in folderLists"
                                         :key="folder.id"
                                     >
-                                        {{ folder.name }}
-                                    </li>
-                                </ul>
-                                <pre>{{ folderLists }}</pre>
+                                        <div class="card shadow-none border">
+                                            <div class="card-body p-3">
+                                                <div class="text-center">
+                                                    <div class="mb-2">
+                                                        <div
+                                                            class="avatar-title bg-transparent rounded"
+                                                        >
+                                                            <i
+                                                                class="bx bxs-folder font-size-24 text-warning"
+                                                            ></i>
+                                                        </div>
+                                                    </div>
+                                                    <h5
+                                                        class="font-size-14 text-truncate mb-1"
+                                                    >
+                                                        <a
+                                                            href="javascript: void(0);"
+                                                            class="text-body"
+                                                        >
+                                                            {{ folder.name }}
+                                                        </a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -171,27 +162,112 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="folderModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="folderModalLabel">
+                        {{ __("Create Folder") }}
+                    </h5>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                    ></button>
+                </div>
+                <div class="modal-body">
+                    <input
+                        type="text"
+                        :value="newFolderName"
+                        @input="onFolderNameInput"
+                        class="form-control"
+                        placeholder="Folder name"
+                    />
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">
+                        {{ __("Close") }}
+                    </button>
+                    <button class="btn btn-primary" @click="createFolder">
+                        {{ __("Create") }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 <script setup>
 import axios from "axios";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 
-const folderLists = ref([]);
+const props = defineProps({
+    folders: {
+        type: Object,
+    },
+});
+
+const folderLists = ref(props.folders || []);
 const currentFolderId = ref(0);
+const newFolderName = ref("");
+let folderModalInstance = null;
+
+const onFolderNameInput = (event) => {
+    newFolderName.value = event.target.value;
+};
+
+const createFolder = async () => {
+    if (!newFolderName.value.trim()) return;
+
+    try {
+        const response = await axios.post(route("media.folders.create"), {
+            name: newFolderName.value,
+            parent_id: currentFolderId.value,
+        });
+        if (!response.data.error) {
+            newFolderName.value = "";
+
+            if (folderModalInstance) folderModalInstance.hide();
+
+            fetchMedia(currentFolderId.value);
+        } else {
+            alert(response.data.message || "Error creating folder");
+        }
+    } catch (err) {
+        console.error(err);
+        alert("Error creating folder");
+    }
+};
+
+const openFolder = async (folderId) => {
+    currentFolderId.value = folderId;
+    await fetchMedia(folderId);
+};
 
 const fetchMedia = async (folderId = 0) => {
     try {
         const response = await axios.get(route("media.list"), {
             params: { folder_id: folderId },
         });
-        folderLists.value = response.data;
-        console.log(response.data);
+        folderLists.value = [...response.data];
     } catch (error) {
         console.error("Error fetching data:", error);
     }
 };
 
 onMounted(() => {
-    fetchMedia(currentFolderId.value);
+    fetchMedia(0);
+    const modalEl = document.getElementById("folderModal");
+    folderModalInstance = bootstrap.Modal.getOrCreateInstance(modalEl);
 });
+
+watch(
+    () => props.folders,
+    (newVal) => {
+        if (newVal.length > 0 && folderLists.value.length === 0) {
+            folderLists.value = [...newVal];
+        }
+    },
+    { immediate: true }
+);
 </script>

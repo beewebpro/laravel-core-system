@@ -11,7 +11,6 @@
     <meta content="BNG System" name="description" />
     <meta content="BNG" name="author" />
     <link rel="shortcut icon" href="{{ URL::asset('vendor/core/core/base/images/favicon.ico') }}">
-    @routes
     @include('core/base::layouts.head-css')
     @stack('header')
 </head>
@@ -24,13 +23,16 @@
             <div class="page-content">
                 <div class="container-fluid">
                     {{ Breadcrumb::default() }}
-                    @yield('content')
+                    <div id="app">
+                        @yield('content')
+                    </div>
                 </div>
             </div>
             @include('core/base::layouts.partials.footer')
         </div>
     </div>
     @include('core/base::layouts.vendor-scripts')
+    {!! rescue(fn() => app(Tighten\Ziggy\BladeRouteGenerator::class)->generate(), report: false) !!}
 </body>
 
 </html>
