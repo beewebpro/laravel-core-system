@@ -17,14 +17,14 @@ class MediaFolderController extends BaseController
       $name = $request->input('name');
       $parentId = $request->input('parent_id');
 
-      MediaFolder::query()->create([
+      $folder = MediaFolder::query()->create([
         'name' => MediaFolder::createName($name, $parentId),
         'slug' => MediaFolder::createSlug($name, $parentId),
         'parent_id' => $parentId,
         'user_id' => Auth::guard()->id(),
       ]);
 
-      return Media::responseSuccess([], trans('core/media::media.folder_created'));
+      return Media::responseSuccess($folder->toArray(), trans('core/media::media.folder_created'));
     } catch (Exception $exception) {
       return Media::responseError($exception->getMessage());
     }

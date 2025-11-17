@@ -23,6 +23,7 @@
         "glob": "^11.0.0",
         "mitt": "^3.0.1",
         "sanitize-html": "^2.17.0",
+        "tiny-emitter": "^2.1.0",
         "toastify-js": "^1.12.0",
         "vue": "^3.3.4"
     }

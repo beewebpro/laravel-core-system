@@ -4,6 +4,7 @@ namespace Bng\Media\Http\Controllers;
 
 use Bng\Base\Facades\Assets;
 use Bng\Base\Http\Controllers\BaseController;
+use Bng\Media\Facades\Media;
 use Bng\Media\Models\MediaFolder;
 use Illuminate\Http\Request;
 
@@ -41,8 +42,10 @@ class MediaController extends BaseController
       ->orderBy('created_at', 'desc')
       ->get();
 
-
-    return response()->json($folders);
+    return Media::responseSuccess([
+      'files' => $files,
+      'folders' => $folders,
+    ]);
   }
 
   public function getPopup(Request $request) {}
